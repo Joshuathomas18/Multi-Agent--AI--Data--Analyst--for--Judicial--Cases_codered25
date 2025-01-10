@@ -1,0 +1,45 @@
+<svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Styles -->
+    <defs>
+        <style>
+            .box { fill: white; stroke: #333; stroke-width: 2; }
+            .arrow { stroke: #666; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+            .label { font-family: Arial; font-size: 14px; text-anchor: middle; }
+        </style>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+        </marker>
+    </defs>
+
+    <!-- User Input Box -->
+    <rect x="180" y="20" width="140" height="50" rx="5" class="box"/>
+    <text x="250" y="50" class="label">User Input</text>
+
+    <!-- Petition Module -->
+    <rect x="180" y="120" width="140" height="50" rx="5" class="box"/>
+    <text x="250" y="150" class="label">Petition Module</text>
+
+    <!-- ACT Module -->
+    <rect x="50" y="220" width="140" height="50" rx="5" class="box"/>
+    <text x="120" y="250" class="label">ACT Module</text>
+
+    <!-- LawBot -->
+    <rect x="310" y="220" width="140" height="50" rx="5" class="box"/>
+    <text x="380" y="250" class="label">LawBot</text>
+
+    <!-- Database -->
+    <rect x="180" y="320" width="140" height="50" rx="5" class="box"/>
+    <text x="250" y="350" class="label">Database</text>
+
+    <!-- Arrows -->
+    <!-- User Input to Petition Module -->
+    <path d="M250 70 L250 120" class="arrow"/>
+
+    <!-- Petition Module to Modules -->
+    <path d="M250 170 L250 190 L120 190 L120 220" class="arrow"/>
+    <path d="M250 170 L250 190 L380 190 L380 220" class="arrow"/>
+
+    <!-- Modules to Database -->
+    <path d="M120 270 L120 290 L250 290 L250 320" class="arrow"/>
+    <path d="M380 270 L380 290 L250 290" class="arrow"/>
+</svg>
