@@ -2,7 +2,9 @@
 
 ## Overview
 LAWGORYTHM is an AI-powered web platform designed to simplify and enhance the analysis of judicial cases. By integrating advanced modules such as the **Petition Pipeline**, **ACT Module**, and **LawBot**, LAWGORYTHM provides a seamless solution for processing legal documents, performing advanced analysis, and offering interactive legal assistance.
-![Alt Text](image2.png)
+
+
+![Alt Text](image_2.jpg)
 
 ---
 
@@ -83,6 +85,8 @@ LAWGORYTHM is an AI-powered web platform designed to simplify and enhance the an
 
 ---
 
+
+![Alt Text](image.jpg)
 ## Key Components
 
 ### **1. Petition Module**
@@ -219,7 +223,7 @@ if __name__ == '__main__':
 ```
 
 ---
-
+![Alt Text](image_3.jpg)
 ## Usage
 
 1. **Run the Petition Module**:
