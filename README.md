@@ -62,9 +62,9 @@ LAWGORYTHM is an AI-powered web platform designed to simplify and enhance the an
 
 ## Architecture
 
-```
-![Alt Text](image.png)                 
----
+
+![Alt Text](system-architecture.svg)                 
+
 
 
 ![Alt Text](image.png)
