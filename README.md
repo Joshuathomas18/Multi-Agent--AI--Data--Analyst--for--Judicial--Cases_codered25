@@ -1,4 +1,4 @@
-# <img src="image_4.jpg" alt="LAWGORITHM Logo" width="50" height="50">LAWGORYTHM: Multi-Agent AI Data Analyst for Judicial Cases
+# <img src="image_4.jpg" alt="LAWGORITHM Logo" width="50" height="50">LAWGORITHM: Multi-Agent AI Data Analyst for Judicial Cases
 
 
 
