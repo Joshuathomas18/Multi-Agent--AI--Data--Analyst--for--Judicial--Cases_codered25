@@ -336,6 +336,158 @@ class Precedents(text):
     """
    ```
 
+## Frontend Overview:
+
+## Overview
+The frontend of LAWGORYTHM serves as the user interface for interacting with the multi-agent AI system. It is designed to be user-friendly, responsive, and visually appealing, enabling lawyers and legal professionals to leverage the platform's features seamlessly. The frontend integrates with backend APIs to display petitions, case insights, and legal summaries dynamically.
+
+---
+
+## Features
+- **Responsive Design**: Accessible on both desktop and mobile devices.
+- **Interactive Interface**: Allows users to upload case files, generate petitions, and query legal insights.
+- **Real-Time Updates**: Fetches and displays results dynamically from the backend.
+- **Visualization**: Displays summaries, trends, and legal references using charts and graphs.
+
+---
+
+## Technology Stack
+The frontend is built using modern web development technologies:
+- **HTML5**: For structuring the web content.
+- **CSS3**: For styling the interface.
+- **JavaScript**: For interactivity and API integration.
+- **Frameworks/Libraries**:
+  - **React.js**: Ensures modular and dynamic UI components.
+  - **Tailwind CSS**: Simplifies responsive and modern styling.
+
+---
+
+## File Structure
+A typical structure of the frontend:
+
+```
+frontend/
+├── public/
+│   ├── index.html         # Main HTML file
+│   └── assets/            # Images and other static assets
+├── src/
+│   ├── components/        # Reusable React components
+│   ├── pages/             # Pages (e.g., Home, Upload, Results)
+│   ├── App.js             # Main app entry point
+│   └── index.js           # Application root
+├── package.json           # Project metadata and dependencies
+└── tailwind.config.js     # Tailwind CSS configuration
+```
+
+---
+
+## Key Components
+
+### **1. Upload Section**
+- **Purpose**: Allows users to upload case files (e.g., PDFs).
+- **Description**: The upload section accepts user files and sends them to the backend for processing.
+- **Code Snippet**:
+```javascript
+function UploadComponent() {
+    const handleFileUpload = (event) => {
+        const file = event.target.files[0];
+        const formData = new FormData();
+        formData.append('file', file);
+
+        fetch('http://localhost:5000/upload', {
+            method: 'POST',
+            body: formData,
+        })
+        .then((response) => response.json())
+        .then((data) => console.log(data));
+    };
+
+    return (
+        <div>
+            <input type="file" onChange={handleFileUpload} />
+        </div>
+    );
+}
+```
+
+### **2. Results Page**
+- **Purpose**: Displays case summaries, petitions, and legal references.
+- **Description**: Fetches results from the backend and renders them dynamically.
+- **Code Snippet**:
+```javascript
+function ResultsPage() {
+    const [results, setResults] = React.useState(null);
+
+    React.useEffect(() => {
+        fetch('http://localhost:5000/results')
+            .then((response) => response.json())
+            .then((data) => setResults(data));
+    }, []);
+
+    return (
+        <div>
+            {results ? (
+                <div>
+                    <h1>Case Summary</h1>
+                    <p>{results.summary}</p>
+                </div>
+            ) : (
+                <p>Loading...</p>
+            )}
+        </div>
+    );
+}
+```
+
+### **3. Visualization Section**
+- **Purpose**: Provides charts and graphs for insights and trends.
+- **Description**: Uses libraries like Chart.js or D3.js to render data visually.
+- **Code Snippet**:
+```javascript
+import { Bar } from 'react-chartjs-2';
+
+const data = {
+    labels: ['Clause 1', 'Clause 2', 'Clause 3'],
+    datasets: [
+        {
+            label: 'References',
+            data: [12, 19, 3],
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1,
+        },
+    ],
+};
+
+function Visualization() {
+    return <Bar data={data} />;
+}
+```
+
+---
+
+
+
+## Deployment
+1. **Build the Application**:
+   ```bash
+   npm run build
+   ```
+2. **Host Static Files**:
+   Deploy the `build/` directory to services like Netlify, Vercel, or AWS S3.
+
+---
+
+## Future Enhancements
+- **Dark Mode**: Add a toggle for light and dark themes.
+- **Multi-Language Support**: Provide translations for global accessibility.
+- **User Authentication**: Secure access with login/signup functionality.
+
+---
+
+## Conclusion
+The frontend of LAWGORYTHM ensures a seamless and efficient user experience, enabling legal professionals to interact with advanced AI tools effortlessly. With responsive design, real-time interactivity, and robust visualizations, it is tailored to meet the needs of modern legal workflows.
+
 ## Deployment
 
 1. **Deploy Backend**:
@@ -350,25 +502,7 @@ class Precedents(text):
 
 ---
 
-## Contributing
 
-Contributions are welcome! To contribute:
-1. Fork the repository.
-2. Create a new branch:
-   ```bash
-   git checkout -b feature-branch
-   ```
-3. Commit your changes:
-   ```bash
-   git commit -m "Add new feature"
-   ```
-4. Push to the branch:
-   ```bash
-   git push origin feature-branch
-   ```
-5. Open a pull request.
-
----
 
 ## License
 
