@@ -1,5 +1,5 @@
-<img src="image_4" alt="LAWGORYTHM Logo" width="50" height="50">
-LAWGORYTHM: Multi-Agent AI Data Analyst for Judicial Cases
+# <img src="image_4.jpg" alt="LAWGORYTHM Logo" width="50" height="50">LAWGORYTHM: Multi-Agent AI Data Analyst for Judicial Cases
+
 
 
 
@@ -63,29 +63,7 @@ LAWGORYTHM is an AI-powered web platform designed to simplify and enhance the an
 ## Architecture
 
 ```
-                          +----------------+
-                          |   User Input   |
-                          +--------+-------+
-                                   |
-                                   v
-                          +----------------+
-                          |   Petition     |
-                          |   Module       |
-                          +--------+-------+
-                                   |
-                   +---------------+----------------+
-                   |                                |
-         +---------+----------+         +-----------+---------+
-         |       ACT Module    |         |       LawBot        |
-         +---------+----------+         +-----------+---------+
-                   |                                |
-                   +---------------+----------------+
-                                   |
-                          +--------+-------+
-                          |   Database      |
-                          +----------------+
-```
-
+![Alt Text](image.png)                 
 ---
 
 
