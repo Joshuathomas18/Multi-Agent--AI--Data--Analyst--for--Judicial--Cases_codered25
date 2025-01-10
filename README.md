@@ -1,4 +1,5 @@
-# LAWGORITHM: Multi-Agent AI Data Analyst for Judicial Cases
+# <p align="center"><img src="image_4.jpg" alt="LAWGORYTHM" style="max-width: 100%; height: auto;">
+</p>
 
 ## Overview
 LAWGORYTHM is an AI-powered web platform designed to simplify and enhance the analysis of judicial cases. By integrating advanced modules such as the **Petition Pipeline**, **ACT Module**, and **LawBot**, LAWGORYTHM provides a seamless solution for processing legal documents, performing advanced analysis, and offering interactive legal assistance.
