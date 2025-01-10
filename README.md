@@ -465,9 +465,8 @@ function Visualization() {
 ```
 
 ---
-
-
-
+[View the PDF](codered.pdf)
+**This will give you an idea as to how the webisite UI/UX feels like.**
 ## Deployment
 1. **Build the Application**:
    ```bash
