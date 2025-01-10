@@ -257,6 +257,84 @@ if __name__ == '__main__':
    Open `http://localhost:5000` in your browser.
 
 ---
+### Multi Agent Compilation
+This script outlines the different agents and their functionality in a system that integrates multi-agent methodologies for legal analysis:
+
+Explanation of Each Class
+Petition
+This class acts as a tool to generate petitions:
+
+**Purpose**: It takes a judiciary problem statement and constructs a legal petition as an output.
+**Use Case**: Automates the creation of detailed and well-structured petitions, saving lawyers time in drafting.
+Act
+This agent retrieves specific legal acts and their descriptions:
+
+**Purpose**: Given a law-related statement, it fetches the corresponding act number and its detailed explanation.
+**Use Case**: Useful for legal professionals or systems requiring precise legal references for argumentation.
+LawBot
+This agent summarizes legal cases:
+
+**Purpose**: Converts detailed case information into concise, point-wise summaries for clarity.
+**Use Case**: Assists lawyers in presenting cases effectively, making arguments more structured and digestible.
+Citation
+This agent finds references from the Indian Penal Code (IPC):
+
+**Purpose**: Fetches citations and trusted references related to a specific case or law statement.
+**Use Case**: Helps provide credibility and context to legal arguments by including relevant IPC sections and literature.
+Precedents
+This agent collects judicial precedents:
+
+**Purpose**: Identifies previous case rulings that are relevant to the current case.
+**Use Case**: Essential for constructing valid arguments based on historical judgments and case law.
+How These Classes Work Together
+
+Petition provides the starting point for constructing legal documentation.
+Act, Citation, and Precedents enhance the petition with legal references and context.
+LawBot consolidates all information and presents it in a clear, summarized format for easy understanding.
+
+
+```bash
+from agency_swarm import Agent, Agency, set_openai_key
+from agency_swarm import BaseTool
+from pydantic import Field
+from enum import Enum
+from dotenv import load_dotenv
+import requests
+import os
+import luigi
+
+load_dotenv()
+
+
+class Petition(text):
+    """
+    This tool creates a petition as the output by taking in a judiciary problem statement.
+    """
+
+
+class Act(text):
+    """
+    This agent fetches the exact act number and the description of the same pertaining to the law statement           provided by the user .
+    """
+
+    
+class LawBot(pdf):
+    """
+    This agent summarizes the case point-wise so as to make the argument presentable and neater.
+    """
+
+
+class Citation(link):
+    """
+    This agent fetches citations of the Indian Penal Code on referral of Law literature and trusted sites so as to provide information on the type of case taken.
+    """
+
+
+class Precedents(text):
+    """
+    This agent fetches all the precedents that correlate to the case undertaken to make valid arguments.
+    """
+   ```
 
 ## Deployment
 
