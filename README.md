@@ -36,7 +36,9 @@ LAWGORITHM is an AI-powered web platform designed to simplify and enhance the an
 
 
 
-![Alt Text](image_2.jpg)
+<p align="center">
+  <img src="image_2.jpg" alt="LAWGORYTHM Logo" width="155" height="175">
+</p>
 
 ---
 
