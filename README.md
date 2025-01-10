@@ -1,4 +1,4 @@
-# LAWGORYTHM: Multi-Agent AI Data Analyst for Judicial Cases
+# LAWGORITHM: Multi-Agent AI Data Analyst for Judicial Cases
 
 ## Overview
 LAWGORYTHM is an AI-powered web platform designed to simplify and enhance the analysis of judicial cases. By integrating advanced modules such as the **Petition Pipeline**, **ACT Module**, and **LawBot**, LAWGORYTHM provides a seamless solution for processing legal documents, performing advanced analysis, and offering interactive legal assistance.
@@ -18,7 +18,7 @@ LAWGORYTHM is an AI-powered web platform designed to simplify and enhance the an
 1. [Installation](#installation)
 2. [Architecture](#architecture)
 3. [Key Components](#key-components)
-   - [Petition Pipeline](#petition-pipeline)
+   - [Petition Module](#petition-module)
    - [ACT Module](#act-module)
    - [LawBot](#lawbot)
 4. [Usage](#usage)
@@ -64,7 +64,7 @@ LAWGORYTHM is an AI-powered web platform designed to simplify and enhance the an
                                    v
                           +----------------+
                           |   Petition     |
-                          |   Pipeline     |
+                          |   Module       |
                           +--------+-------+
                                    |
                    +---------------+----------------+
@@ -84,8 +84,74 @@ LAWGORYTHM is an AI-powered web platform designed to simplify and enhance the an
 
 ## Key Components
 
-### **1. Petition Pipeline**
-Handles data preprocessing, classification, and summarization of legal documents.
+### **1. Petition Module**
+The Petition Module serves as the foundational step in the pipeline. It focuses on ingesting, preprocessing, and classifying judicial case data to extract key legal insights.
+
+#### **Step-by-Step Workflow**
+
+1. **Data Loading**:
+   - Import the judicial case dataset.
+   - Use pandas to load the data into a DataFrame.
+   ```python
+   import pandas as pd
+   df = pd.read_csv('final_judge_database.csv')
+   ```
+
+2. **Text Preprocessing**:
+   - Clean the text data to make it suitable for model training.
+   - Steps include converting text to lowercase and removing special characters.
+   ```python
+   import re
+   def preprocess_text(text):
+       text = text.lower()
+       text = re.sub(r'[^a-z0-9 ]', '', text)
+       return text
+
+   df['cleaned_text'] = df['text_column'].apply(preprocess_text)
+   ```
+
+3. **Feature Extraction**:
+   - Transform the text data into numerical features using vectorization techniques.
+   ```python
+   from sklearn.feature_extraction.text import TfidfVectorizer
+   vectorizer = TfidfVectorizer()
+   X = vectorizer.fit_transform(df['cleaned_text'])
+   ```
+
+4. **Train-Test Split**:
+   - Split the dataset into training and testing sets for model evaluation.
+   ```python
+   from sklearn.model_selection import train_test_split
+   X_train, X_test, y_train, y_test = train_test_split(X, df['target'], test_size=0.2, random_state=42)
+   ```
+
+5. **Model Training**:
+   - Train a classification model, such as Logistic Regression, on the prepared dataset.
+   ```python
+   from sklearn.linear_model import LogisticRegression
+   model = LogisticRegression()
+   model.fit(X_train, y_train)
+   ```
+
+6. **Model Evaluation**:
+   - Evaluate the trained model using metrics like accuracy and classification reports.
+   ```python
+   from sklearn.metrics import accuracy_score, classification_report
+   y_pred = model.predict(X_test)
+   print("Accuracy:", accuracy_score(y_test, y_pred))
+   print("Classification Report:
+", classification_report(y_test, y_pred))
+   ```
+
+7. **Save Processed Data**:
+   - Save the processed data and trained model for downstream use in the pipeline.
+   ```python
+   import joblib
+   joblib.dump(model, 'petition_model.pkl')
+   ```
+
+This module outputs predictions and summarized insights, which feed into the subsequent ACT Module for deeper analysis.
+Handles data preprocessing, classification, summarization, and key legal insights extraction.
 
 #### Example Code:
 ```python
@@ -94,7 +160,12 @@ import pandas as pd
 df = pd.read_csv('final_judge_database.csv')
 
 # Preprocess text
-df['cleaned_text'] = df['text_column'].str.lower().str.replace(r'[^a-z0-9 ]', '')
+def preprocess_text(text):
+    text = text.lower()
+    text = re.sub(r'[^a-z0-9 ]', '', text)
+    return text
+
+df['cleaned_text'] = df['text_column'].apply(preprocess_text)
 
 # Train a classifier
 from sklearn.linear_model import LogisticRegression
@@ -128,7 +199,7 @@ plt.show()
 ---
 
 ### **3. LawBot**
-An AI chatbot that uses the outputs of the pipeline and ACT module to provide legal insights interactively.
+An AI chatbot that uses the outputs of the Petition and ACT modules to provide legal insights interactively.
 
 #### Example Code:
 ```python
@@ -150,9 +221,9 @@ if __name__ == '__main__':
 
 ## Usage
 
-1. **Run the Petition Pipeline**:
+1. **Run the Petition Module**:
    ```bash
-   python pipeline.py
+   python petition.py
    ```
 
 2. **Run the ACT Module**:
@@ -184,7 +255,25 @@ if __name__ == '__main__':
 
 ---
 
+## Contributing
 
+Contributions are welcome! To contribute:
+1. Fork the repository.
+2. Create a new branch:
+   ```bash
+   git checkout -b feature-branch
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m "Add new feature"
+   ```
+4. Push to the branch:
+   ```bash
+   git push origin feature-branch
+   ```
+5. Open a pull request.
+
+---
 
 ## License
 
@@ -194,4 +283,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Acknowledgements
 Special thanks to the contributors and open-source libraries that made this project possible.
-
