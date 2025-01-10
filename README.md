@@ -86,7 +86,7 @@ LAWGORYTHM is an AI-powered web platform designed to simplify and enhance the an
 ---
 
 
-![Alt Text](image.jpg)
+![Alt Text](image.png)
 ## Key Components
 
 ### **1. Petition Module**
